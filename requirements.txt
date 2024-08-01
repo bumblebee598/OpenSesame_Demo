@@ -1,0 +1,7 @@
+langchain-text-splitters
+pinecone
+pypdf2
+streamlit
+langchain-community
+langchain-openai
+langchain-cohere
