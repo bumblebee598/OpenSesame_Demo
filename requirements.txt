@@ -5,4 +5,5 @@ streamlit
 langchain-community
 langchain-openai
 langchain-cohere
+langchain-huggingface
 sentence-transformers

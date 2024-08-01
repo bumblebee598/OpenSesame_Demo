@@ -4,7 +4,7 @@ from PyPDF2 import PdfReader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 import warnings
 warnings.filterwarnings('ignore', category=UserWarning, message='TypedStorage is deprecated')
-from langchain_community.embeddings import SentenceTransformerEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 
 pinecone_api_key = os.environ["PINECONE_API_KEY"]
 
@@ -19,7 +19,7 @@ def extract_text_from_pdf(file_path):
          
 # Generate embeddings for Medical papers
 def generate_embeddings(documents):
-    embedding_model = SentenceTransformerEmbeddings(model_name="NeuML/pubmedbert-base-embeddings")
+    embedding_model = HuggingFaceEmbeddings(model_name="NeuML/pubmedbert-base-embeddings")
     embeddings = embedding_model.embed_documents(documents)
     return embeddings
 

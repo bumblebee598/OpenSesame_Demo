@@ -1,7 +1,7 @@
 from pinecone import Pinecone
 import warnings
 warnings.filterwarnings('ignore', category=UserWarning, message='TypedStorage is deprecated')
-from langchain_community.embeddings import SentenceTransformerEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_openai import OpenAI
 from langchain_cohere import ChatCohere
 from data import generate_embeddings
@@ -16,7 +16,7 @@ pc = Pinecone(api_key=pinecone_api_key)
 index = pc.Index("demo-index")
 
 def embed_question(query) :
-    embedding_model = SentenceTransformerEmbeddings(model_name="NeuML/pubmedbert-base-embeddings")
+    embedding_model = HuggingFaceEmbeddings(model_name="NeuML/pubmedbert-base-embeddings")
     embeddings = embedding_model.embed_query(query)
     return embeddings
 
