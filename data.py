@@ -6,7 +6,7 @@ import warnings
 warnings.filterwarnings('ignore', category=UserWarning, message='TypedStorage is deprecated')
 from langchain_community.embeddings import SentenceTransformerEmbeddings
 
-pinecone_api_key = "e524dae3-6554-4375-abfd-af82b23b47c6"
+pinecone_api_key = os.environ["PINECONE_API_KEY"]
 
 # Loading medical paper pdf files
 def extract_text_from_pdf(file_path):

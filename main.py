@@ -6,10 +6,11 @@ from langchain_openai import OpenAI
 from langchain_cohere import ChatCohere
 from data import generate_embeddings
 import numpy as np
+import os
 
-pinecone_api_key = "e524dae3-6554-4375-abfd-af82b23b47c6"
-openai_api_key = "sk-proj-oJTPzgUv68j2oTFxQpchT3BlbkFJ9Av1Kp7EloR1IX3kZn44"
-cohere_api_key = "FQMgnrmsWMxGkVPbklc4B3XbCOAJji4ljeYXhMvN"
+pinecone_api_key = os.environ["PINECONE_API_KEY"]
+openai_api_key = os.environ["OPENAI_API_KEY"]
+cohere_api_key = os.environ["COHERE_API_KEY"]
 
 pc = Pinecone(api_key=pinecone_api_key)
 index = pc.Index("demo-index")
