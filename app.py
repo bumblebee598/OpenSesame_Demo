@@ -16,19 +16,6 @@ def display_eval(sim, correctness, relevance) :
         df = pd.DataFrame(data)
         st.table(df)
 
-def summary_stats() :
-    for i in range(len(st.session_state.query)):
-        with st.chat_message("user"):
-            st.markdown(st.session_state.query[i])
-        with st.chat_message("assistant"):
-            with st.container(height=200) :
-                st.markdown("context :")
-                st.markdown(st.session_state.text[i])
-            st.markdown(st.session_state.response[i])
-            sim = st.session_state.sim[i]
-            correctness = st.session_state.correctness[i]
-            relevance = st.session_state.relevance[i]
-            display_eval(sim, correctness, relevance)
 
 def main_app() :
     st.markdown("LLM Evaluation - OpenSesame Project")
@@ -38,10 +25,7 @@ def main_app() :
         with st.expander("List of Questions you can ask") :
             for question in question_list :
                 st.markdown(question)
-        button = st.button(key="button", label="Summarize LLM performance")
-        st.write("click this to produce a summary of the LLM's performance based on all the questions you have asked")
-        if button :
-            st.write("button clicked")
+
         
     if "query" not in st.session_state:
         st.session_state.query = []
